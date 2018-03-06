@@ -23,3 +23,7 @@ Route::get('/balanceTransfer', function () {
 Route::get('/paymentGateway', function () {
     return view('paymentconf');
 });
+
+Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
+Route::post('login', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout')->name('logout');

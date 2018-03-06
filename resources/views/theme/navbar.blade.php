@@ -44,7 +44,7 @@
 								</a>
 							</li>
 							<li class="last">
-								<a href="extra-lockscreen.html">
+								<a href="/logout">
 									<i class="fa-lock"></i>
 									Logout
 								</a>
