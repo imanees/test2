@@ -53,7 +53,7 @@
 						</a>						
 					</li>
 					<li>
-						<a href="ACD.html">
+						<a href="/ratePlanDetails">
 							<i class="linecons-money"></i>
 							<span class="title">My Rate</span>
 						</a>						

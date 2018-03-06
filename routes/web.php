@@ -16,14 +16,19 @@ Route::get('/', function () {
 });
 Route::get('/profile', function () {
     return view('profile');
-});
+})->middleware('auth');
 Route::get('/balanceTransfer', function () {
     return view('balanceTransfer');
-});
+})->middleware('auth');
 Route::get('/paymentGateway', function () {
     return view('paymentconf');
-});
-
+})->middleware('auth');
+Route::get('/ratePlanDetails', function () {
+    return view('ratePlan');
+})->middleware('auth');
+Route::get('/topUpRatePlanDetails', function () {
+    return view('topUpRate');
+})->middleware('auth');
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
