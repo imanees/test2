@@ -34,7 +34,10 @@ Route::get('/paymentView', function () {
 })->middleware('auth');
 Route::get('/costCalculator', function () {
     return view('costCalculator');
-});
+})->middleware('auth');
+Route::get('/history', function () {
+    return view('history');
+})->middleware('auth');
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout')->name('logout');

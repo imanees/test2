@@ -65,7 +65,7 @@
 						</a>						
 					</li>
 					<li>
-						<a href="ACD.html">
+						<a href="history">
 							<i class="linecons-doc"></i>
 							<span class="title">History</span>
 						</a>						
