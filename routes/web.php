@@ -29,6 +29,12 @@ Route::get('/ratePlanDetails', function () {
 Route::get('/topUpRatePlanDetails', function () {
     return view('topUpRate');
 })->middleware('auth');
+Route::get('/paymentView', function () {
+    return view('paymentView');
+})->middleware('auth');
+Route::get('/costCalculator', function () {
+    return view('costCalculator');
+});
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout')->name('logout');

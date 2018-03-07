@@ -71,7 +71,7 @@
 						</a>						
 					</li>
 					<li>
-						<a href="route.html">
+						<a href="paymentView">
 							<i class="linecons-wallet"></i>
 							<span class="title">Recharge History</span>
 						</a>						
@@ -80,6 +80,12 @@
 						<a href="balanceTransfer">
 							<i class="linecons-truck"></i>
 							<span class="title">Balance Transfer</span>
+						</a>						
+					</li>
+					<li>
+						<a href="costCalculator">
+							<i class="linecons-calendar"></i>
+							<span class="title">Cost Calculator</span>
 						</a>						
 					</li>
 				</ul>
