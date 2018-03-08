@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
 use App\User;
+use Auth;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Session;
 
@@ -14,6 +15,12 @@ class loginController extends Controller
 
     public function create()
     {
+        $client = new Client();
+        $baseUrl = 'http://85.13.248.212/ymax/api/';
+        $response = $client->get($baseUrl . 'checkRate.jsp', ['query' => ['username' => 48006]]);
+        $rates = $response->getBody()->getContents();
+        $rates = explode('</br>', $rates);
+        print_r($rates);
         return view('login.login');
     }
     public function login(Request $request)
