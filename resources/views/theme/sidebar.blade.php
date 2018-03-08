@@ -59,7 +59,7 @@
 						</a>						
 					</li>
 					<li>
-						<a href="route.html">
+						<a href="packages">
 							<i class="linecons-database"></i>
 							<span class="title">My Packages</span>
 						</a>						
@@ -80,6 +80,18 @@
 						<a href="balanceTransfer">
 							<i class="linecons-truck"></i>
 							<span class="title">Balance Transfer</span>
+						</a>						
+					</li>
+					<li>
+						<a href="addRecharge">
+							<i class="linecons-comment"></i>
+							<span class="title">Request a Top Up</span>
+						</a>						
+					</li>
+					<li>
+						<a href="RechargeAccount">
+							<i class="linecons-shop"></i>
+							<span class="title">Buy Credit</span>
 						</a>						
 					</li>
 					<li>

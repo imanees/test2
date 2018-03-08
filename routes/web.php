@@ -38,6 +38,22 @@ Route::get('/costCalculator', function () {
 Route::get('/history', function () {
     return view('history');
 })->middleware('auth');
+Route::get('/addRecharge', function () {
+    return view('addRecharge');
+})->middleware('auth');
+Route::get('/RechargeAccount', function () {
+    return view('rechargeAccount');
+})->middleware('auth');
+Route::get('/packages', function () {
+    return view('packages');
+})->middleware('auth');
+
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
+
+
+
+//to display password {{Session::get('password')}}
+//	pull method will retrieve and delete an item from the session in a single statement  
+//eg: $value = $request->session()->pull('key', 'default');

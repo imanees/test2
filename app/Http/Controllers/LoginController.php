@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class loginController extends Controller
 {
@@ -25,6 +26,7 @@ class loginController extends Controller
 
 		if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
 			//echo redirect('/admin/home');
+			Session::put('password', $request->password);
 
 			return redirect()->intended('/');	
 		}
