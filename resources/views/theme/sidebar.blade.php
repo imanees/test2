@@ -96,7 +96,7 @@
 					</li>
 					<li>
 						<a href="costCalculator">
-							<i class="linecons-calendar"></i>
+							<i class="fa-calculator"></i>
 							<span class="title">Cost Calculator</span>
 						</a>						
 					</li>

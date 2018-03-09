@@ -20,6 +20,44 @@
 							</div>
 						</div>
 						<div class="panel-body">
+							<strong>Available Packages:</strong>
+							
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Package Name</th>
+										<th>Package Period(Days)</th>
+										<th>Package Value</th>
+										<th>Registration Fee</th>
+										<th>DeActivation Date</th>
+										<th>Package Description</th>
+										<th>choose</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									
+								</tbody>
+							</table>
+							<strong>last 10 Package History:</strong>
+							
+							<table class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Sl No</th>
+										<th>Package Name</th>
+										<th>Package Period(Days)</th>
+										<th>Package Value</th>
+										<th>Registration Fee</th>
+										<th>Activation Date</th>
+										<th>DeActivation Date</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									
+								</tbody>
+							</table>
 							
 						</div>
 					</div>

@@ -23,9 +23,11 @@ Route::get('/balanceTransfer', function () {
 Route::get('/paymentGateway', function () {
     return view('paymentconf');
 })->middleware('auth');
-Route::get('/ratePlanDetails', function () {
+
+/*Route::get('/ratePlanDetails', function () {
     return view('ratePlan');
-})->middleware('auth');
+})->middleware('auth');*/
+
 Route::get('/topUpRatePlanDetails', function () {
     return view('topUpRate');
 })->middleware('auth');
@@ -47,6 +49,9 @@ Route::get('/RechargeAccount', function () {
 Route::get('/packages', function () {
     return view('packages');
 })->middleware('auth');
+
+
+Route::get('/ratePlanDetails', 'PageController@myRate'); 
 
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');
