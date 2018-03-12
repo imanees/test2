@@ -20,7 +20,6 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							
 							<form role="form" class="form-horizontal">
 
 								<div class="form-group">
@@ -139,7 +138,7 @@
 									<label class="col-sm-2 control-label" for="field-7">Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-7" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-7" placeholder="Name" value="{{$info['name']}}">
 									</div>
 								</div>
 								
@@ -149,7 +148,7 @@
 									<label class="col-sm-2 control-label" for="field-8">Designation</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-8" placeholder="Designation">
+										<input type="text" class="form-control" id="field-8" placeholder="Designation" value="@if (isset ($info['Designation'])) {{$info['Designation']}} @endif">
 									</div>
 								</div>
 								
@@ -159,7 +158,7 @@
 									<label class="col-sm-2 control-label" for="field-9">Company Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-9" placeholder="Company">
+										<input type="text" class="form-control" id="field-9" placeholder="Company" value="@if (isset ($info['Company'])) {{$info['Company']}} @endif">
 									</div>
 								</div>
 								
@@ -169,7 +168,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Phone</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Phone" value="@if (isset ($info['Phone'])) {{$info['Phone']}} @endif">
 									</div>
 								</div>
 								
@@ -178,7 +177,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Fax</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Fax" value="@if (isset ($info['Fax'])) {{$info['Fax']}} @endif">
 									</div>
 								</div>
 								
@@ -188,7 +187,7 @@
 									
 									
 									<div class="col-sm-10">
-										<input type="email" class="form-control" id="field-3" placeholder="Enter your email&hellip;">
+										<input type="email" class="form-control" id="field-3" placeholder="Enter your email&hellip;" value="@if (isset ($info['emailID'])) {{$info['emailID']}} @endif">
 										<p class="help-block">Example block-level help text here. Emails inputs are validated on native HTML5 forms.</p>
 									</div>
 								</div>
@@ -198,7 +197,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Post Code</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Pin code">
 									</div>
 								</div>
 								
@@ -207,7 +206,7 @@
 									<label class="col-sm-2 control-label" for="field-1">State</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="State" value="@if (isset ($info['state'])) {{$info['state']}} @endif">
 									</div>
 								</div>
 
@@ -238,7 +237,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Name" value="@if (isset ($info['name'])) {{$info['name']}} @endif">
 									</div>
 								</div>
 								
@@ -247,7 +246,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Designation</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Designation">
 									</div>
 								</div>
 								
@@ -256,7 +255,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Email</label>
 									
 									<div class="col-sm-10">
-										<input type="email" class="form-control" id="field-3" placeholder="Enter your email&hellip;">
+										<input type="email" class="form-control" id="field-3" placeholder="Enter your email&hellip;" value="@if (isset ($info['emailID'])) {{$info['emailID']}} @endif">
 										<p class="help-block">Example block-level help text here. Emails inputs are validated on native HTML5 forms.</p>
 									</div>
 								</div>
@@ -266,7 +265,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Phone</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Phone">
 									</div>
 								</div>
 
@@ -275,7 +274,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Fax</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Placeholder">
+										<input type="text" class="form-control" id="field-1" placeholder="Fax">
 									</div>
 								</div>
 

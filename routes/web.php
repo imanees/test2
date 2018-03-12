@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/profile', function () {
+/*Route::get('/profile', function () {
     return view('profile');
-})->middleware('auth');
+})->middleware('auth');*/
 Route::get('/balanceTransfer', function () {
     return view('balanceTransfer');
 })->middleware('auth');
@@ -37,9 +37,9 @@ Route::get('/paymentView', function () {
 Route::get('/costCalculator', function () {
     return view('costCalculator');
 })->middleware('auth');
-Route::get('/history', function () {
+/*Route::get('/history', function () {
     return view('history');
-})->middleware('auth');
+})->middleware('auth');*/
 Route::get('/addRecharge', function () {
     return view('addRecharge');
 })->middleware('auth');
@@ -50,8 +50,11 @@ Route::get('/packages', function () {
     return view('packages');
 })->middleware('auth');
 
+Route::get('/profile', 'PageController@profile');
 
-Route::get('/ratePlanDetails', 'PageController@myRate'); 
+Route::get('/history', 'PageController@history');  
+Route::get('/ratePlanDetails', 'PageController@myRate');
+Route::post('/topUpRatePlanDetails', 'PageController@mtuRate'); 
 
 Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@create']);
 Route::post('login', 'LoginController@login');

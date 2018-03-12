@@ -62,7 +62,7 @@
 						<label class="col-sm-3 control-label" for="field-2"><span class="text-primary">Records Per Page</span></label>
 							
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="field-2" placeholder="30">
+								<input type="text" name="count" class="form-control" id="field-2" placeholder="30">
 							</div>
 					</div>
 

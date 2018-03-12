@@ -92,6 +92,65 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-sm-12">
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Log</h3>
+				<div class="panel-options">
+					<a href="#" data-toggle="panel">
+						<span class="collapse-icon">&ndash;</span>
+						<span class="expand-icon">+</span>
+					</a>
+					<a href="#" data-toggle="remove">
+						&times;
+					</a>
+				</div>
+			</div>
+			<div class="panel-body">			
+				<table class="table table-bordered table-striped table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>Serial</th>
+							<th>Time</th>
+							<th>Destination</th>
+							<th>Rate</th>
+							<th>Dialed Number</th>
+							<th>Duration</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Arlind</td>
+							<td>Nushi</td>
+							<td>1</td>
+							<td>Arlind</td>
+							<td>Nushi</td>
+							<td>Nushi</td>
+						</tr>
+						
+						<tr>
+							<td>1</td>
+							<td>Arlind</td>
+							<td>Nushi</td>
+							<td>1</td>
+							<td>Arlind</td>
+							<td>Nushi</td>
+							<td>Nushi</td>
+						</tr>
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
+	
+	</div>
+</div>
+
 <script>
 	function showDateRange() {
 	    var x = document.getElementById("datepick");
