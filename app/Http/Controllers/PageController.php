@@ -14,7 +14,7 @@ class PageController extends Controller
     public function myRate()
     {
         $client = new Client();
-        $baseUrl = 'http://85.13.248.212/ymax/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'checkRate.jsp', ['query' => ['username' => 48006]]); //Auth::user()->name
         $rates = $response->getBody()->getContents();
         $rates = explode('</br>', $rates);
@@ -30,7 +30,7 @@ class PageController extends Controller
 
         ]);
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'mtuRateApi.jsp', ['query' => ['country' => $request->country]]);
         $rates = $response->getBody()->getContents();
         $rates = explode('</br>', $rates);
@@ -43,11 +43,11 @@ class PageController extends Controller
     public function profile()
     {
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/';
-        $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => getProfileInfo, 'username' => Auth::user()->name, 'nonce' => AF9EBBE3, 'password' => (nonce+user+password)]]);
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
+        $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => 'getProfileInfo', 'username' => \Auth::user()->name, 'nonce' => 'AF9EBBE3', 'password' => md5('AF9EBBE3'.\Auth::user()->name.\Auth::user()->password)]]);
         $info = $response->getBody()->getContents();
         
-        //$info = "status=0,name= xx,emailID=yy@revesoft.com,nationality=Bangladesh,state=Dhaka,dateOfBirth=YYYYMMDD";
+        $info = "status=0,name= xx,emailID=yy@revesoft.com,nationality=Bangladesh,state=Dhaka,dateOfBirth=YYYYMMDD";
         $info = explode(',', $info);
         foreach ($info as $key => $value) {
             $data = explode('=', $value);
@@ -57,6 +57,7 @@ class PageController extends Controller
                 'info' => $profile
             ]);
     }
+
     public function ajax($id)
     {
         if($id == 1){
@@ -80,7 +81,7 @@ class PageController extends Controller
 
     public function  historyfunction($startdate, $enddate){
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
         $log = $response->getBody()->getContents();
         return view('historyajax', [
@@ -100,7 +101,7 @@ class PageController extends Controller
         $enddate = date("Y-m-d H:i:s", strtotime($date[1]) );
 
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
         $list = $response->getBody()->getContents();
         return view('history', [
@@ -110,7 +111,7 @@ class PageController extends Controller
     public function history()
     {
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => '2014-06-01 12:33:34', 'to_time' => '2014-06-01 12:33:34', 'user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
         $log = $response->getBody()->getContents();
         /*$log = "si;dialed_no;connect_time;duration;region;call_cost<br>
@@ -129,7 +130,7 @@ class PageController extends Controller
 
         ]);
        $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'addFundAPI.do', ['query' => ['service_type' => rechargeHistory, 'historyCount' => $request->count, 'user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
         $result = $response->getBody()->getContents();
         /*$result = "Date;description;amount;rechargedescription;rechargeby<br>
@@ -145,7 +146,7 @@ class PageController extends Controller
     public function packages()
     {
         $client = new Client();
-        $baseUrl = 'http://sip.myswitch.com/api/';
+        $baseUrl = 'http://217.163.51.232/ymax/api/';
         $response = $client->get($baseUrl . 'packageApi.do', ['query' => ['user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv, 'type' => getPackageList]]);
         $result = $response->getBody()->getContents();
         return view('packages', [
