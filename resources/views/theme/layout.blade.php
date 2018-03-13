@@ -33,7 +33,7 @@
 	
 	
 </head>
-<body class="page-body">
+<body class="page-body skin-aero">
 
 	<div class="settings-pane">
 			
