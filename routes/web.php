@@ -30,7 +30,7 @@ Route::get('/paymentGateway', function () {
 
 Route::get('/topUpRatePlanDetails', function () {
     return view('topUpRate');
-})->middleware('auth');
+})->middleware('auth'); //mtu rate
 Route::get('/paymentView', function () {
     return view('paymentView');
 })->middleware('auth');
@@ -52,7 +52,12 @@ Route::get('/packages', function () {
 
 Route::get('/profile', 'PageController@profile');
 
-Route::get('/history', 'PageController@history');  
+Route::post('/paymentView', 'PageController@rechargeHistory');
+
+Route::get('/history', 'PageController@history');
+Route::get('/ajax/{id}', 'PageController@ajax');
+Route::post('/history', 'PageController@historyFilter');
+
 Route::get('/ratePlanDetails', 'PageController@myRate');
 Route::post('/topUpRatePlanDetails', 'PageController@mtuRate'); 
 

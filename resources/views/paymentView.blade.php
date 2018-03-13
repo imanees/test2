@@ -20,8 +20,15 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				
-				<form role="form">
+				@if ($errors->any())
+			        @foreach ($errors->all() as $error)
+			            <span class="error">{{ $error }}</span>
+			            <br>
+			        @endforeach
+
+			    @endif
+				<form role="form" method="post" action="">
+					{{csrf_field()}}
 					
 					<div class="form-group">
 						<span class="text-primary">
@@ -121,35 +128,24 @@
 					</thead>
 					
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>Nushi</td>
-						</tr>
-						
-						<tr>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>Nushi</td>
-						</tr>
-						
-						<tr>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>Nushi</td>
-						</tr>
+						@if(isset($result))
+							@php $count = 1; @endphp
+							@foreach($result as $value)
+
+								@php $string = explode(',', $value); @endphp
+
+								<tr>
+									<td>{{$count}}</td>
+									<td></td>
+									<td>{{$string[2]}}</td>
+									<td>{{$string[3]}}</td>
+									<td>{{$string[0]}}</td>
+									<td>{{$string[1]}}</td>
+									<td>{{$string[4]}}</td>
+								</tr>
+								@php $count++; @endphp
+						    @endforeach
+					    @endif
 					</tbody>
 				</table>
 			

@@ -21,23 +21,24 @@
 			</div>
 			<div class="panel-body">
 				
-				<form role="form">
+				<form role="form" method="post" action="">
+					{{csrf_field()}}
 					
 					<div class="form-group">
 						<label class="radio-inline">
-							<input type="radio" name="radio-2" checked="">
+							<input type="radio" name="radio-2" checked="" >
 							Last
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio-2" checked="">
+							<input type="radio" name="radio-2" onclick="showHistory(1)">
 							Today Till Now
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio-2">
+							<input type="radio" name="radio-2" onclick="showHistory(2)">
 							Previous Day
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="radio-2">
+							<input type="radio" name="radio-2" onclick="showHistory(3)">
 							Previous 2 Days
 						</label>
 						<label class="radio-inline">
@@ -47,12 +48,19 @@
 					</div>
 						<div><br></div>
 						<div id="datepick" style="display: none !important;">
+							@if ($errors->any())
+						        @foreach ($errors->all() as $error)
+						            <span class="error">{{ $error }}</span>
+						            <br>
+						        @endforeach
+
+						    @endif
 						<div class="form-group col-sm-12">
 							<label class="col-sm-3 control-label" for="field-2"><span class="text-primary">Date Range with Timepicker</span></label>
 							
 							<div class="col-sm-9">
 								
-								<input  type="text" id="field-5" class="form-control daterange" data-time-picker="true" data-time-picker-increment="5" data-format="MM/DD/YYYY h:mm A" />
+								<input  type="text" id="field-5" name="daterange" class="form-control daterange" data-time-picker="true" data-time-picker-increment="5" data-format="MM/DD/YYYY h:mm A" />
 								
 							</div>
 						</div>
@@ -63,7 +71,7 @@
 									<input type="text" class="form-control" id="field-2">
 								</div>
 							</div>
-							<div class="form-group col-sm-12">
+							<div class="form-group col-sm-12" style="display: none;">
 								<label class="col-sm-3 control-label" for="field-2"><span class="text-primary">Report Type</span></label>
 								<input type="radio" name="radio-3">
 								Details
@@ -109,7 +117,7 @@
 				</div>
 			</div>
 			<div class="panel-body">			
-				<table class="table table-bordered table-striped table-condensed table-hover">
+				<table class="table table-bordered table-striped table-condensed table-hover" id="tabview">
 					<thead>
 						<tr>
 							<th>Serial</th>
@@ -123,25 +131,25 @@
 					</thead>
 					
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>Nushi</td>
-						</tr>
-						
-						<tr>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>1</td>
-							<td>Arlind</td>
-							<td>Nushi</td>
-							<td>Nushi</td>
-						</tr>
+						@if(isset($logs))
+							@php $count = 1; @endphp
+							@foreach($logs as $log)
+
+								@php $log = explode(';', $log); @endphp
+								@if(count($log)>0)
+								<tr>
+									<td>{{$count}}</td>
+									<td>{{$log[2]}}</td>
+									<td>{{$log[4]}}</td>
+									<td>{{$log[5] / $log[3]}}</td>
+									<td>{{$log[1]}}</td>
+									<td>{{$log[3]}}</td>
+									<td>{{$log[5]}}</td>
+								</tr>
+								@endif
+								@php $count++; @endphp
+						    @endforeach
+					    @endif
 					</tbody>
 				</table>
 			
@@ -160,6 +168,17 @@
 	        x.style.display = "none";
 	    }
 	}
+function showHistory(tabVal){
+	//alert(tabVal);
+		$("#tabview").html('<div style="float:left;margin-left:38%;"><img src="./images/animated_progress.gif" /></div>');	
+		$.ajax({
+			url:"/ajax/"+tabVal,
+			success:function(result){
+				//alert(result);
+				$("#tabview").html(result);
+			 }
+		});
+	};
 </script>
 <link rel="stylesheet" href="{{ asset('js/daterangepicker/daterangepicker-bs3.css') }}">
 
