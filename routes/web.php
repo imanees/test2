@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('login.login');
@@ -70,3 +71,9 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 //to display password {{Session::get('password')}}
 //	pull method will retrieve and delete an item from the session in a single statement  
 //eg: $value = $request->session()->pull('key', 'default');
+Route::get('/nonce', 'PageController@newnonce');
+
+View::creator('theme.navbar', function($view)
+{
+    $view->with('balance', PageController::getBalance());
+});

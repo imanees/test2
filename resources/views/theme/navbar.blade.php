@@ -16,7 +16,7 @@
 				<ul class="user-info-menu right-links list-inline list-unstyled">
 					
                     <li class="hidden-sm hidden-xs">
-                        Balance: 0.00 USD </br>
+                        Balance: @if(isset($balance)) {{$balance}} @endif USD </br>
                         Credit: 0.00 USD </br>
                         Status: Active
 					</li>

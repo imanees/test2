@@ -3,6 +3,13 @@
 
 
 @section('content')
+@if(Session::has('message')) 
+  <div class="alert alert-info" style="font-family: serif; color: #06a704de">
+    <script type="text/javascript">
+      alert("{{Session::get('message')}} ");
+    </script>
+  </div> 
+@endif
 <div class="page-title">
 				
 				<div class="title-env">
@@ -26,21 +33,22 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form role="form" class="form-horizontal">
+					<form role="form" method="post" action="" class="form-horizontal" >
+						{{csrf_field()}}
 
-								<div class="form-group">
-									<label class="col-sm-2 control-label" for="field-2">Country</label>
-									
-									<div class="col-sm-3">
-										<input type="text" name="Country" class="form-control" id="field-1" placeholder="Country ">
-									</div>
-									<div class="col-sm-6">
-										<button type="button" class="btn btn-info btn-single">Search</button>
-									</div>
-								</div>
-								
-								<div class="form-group-separator"></div>
-							</form>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-2">Country</label>
+							
+							<div class="col-sm-3">
+								<input type="text" name="country" class="form-control" id="field-1" placeholder="Country ">
+							</div>
+							<div class="col-sm-6">
+								<button type="submit" class="btn btn-info btn-single">Search</button>
+							</div>
+						</div>
+						
+						<div class="form-group-separator"></div>
+					</form>
 					
 					<script type="text/javascript">
 					jQuery(document).ready(function($)

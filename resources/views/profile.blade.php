@@ -138,7 +138,8 @@
 									<label class="col-sm-2 control-label" for="field-7">Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-7" placeholder="Name" value="{{$info['name']}}">
+										<input type="text" class="form-control" id="field-7" placeholder="Name" value="@if(isset($info['name']))
+										{{$info['name']}} @endif">
 									</div>
 								</div>
 								

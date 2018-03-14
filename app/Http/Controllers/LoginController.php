@@ -23,10 +23,10 @@ class loginController extends Controller
 		    'password' => 'required'
 		    
 		]);
-
 		if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
 			//echo redirect('/admin/home');
 			Session::put('password', $request->password);
+			PageController::newnonce();
 
 			return redirect()->intended('/');	
 		}
