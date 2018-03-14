@@ -44,10 +44,10 @@ class PageController extends Controller
     {
         $client = new Client();
         $baseUrl = 'http://217.163.51.232/ymax/api/';
-        $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => 'getProfileInfo', 'username' => \Auth::user()->name, 'nonce' => 'AF9EBBE3', 'password' => md5('AF9EBBE3'.\Auth::user()->name.\Auth::user()->password)]]);
+        $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => 'getProfileInfo', 'username' => \Auth::user()->name, 'nonce' => 'AF9EBBE3', 'password' => md5('AF9EBBE3'.\Auth::user()->name.\Session::get('password'))]]);
         $info = $response->getBody()->getContents();
         
-        $info = "status=0,name= xx,emailID=yy@revesoft.com,nationality=Bangladesh,state=Dhaka,dateOfBirth=YYYYMMDD";
+        // $info = "status=0,name= xx,emailID=yy@revesoft.com,nationality=Bangladesh,state=Dhaka,dateOfBirth=YYYYMMDD";
         $info = explode(',', $info);
         foreach ($info as $key => $value) {
             $data = explode('=', $value);
@@ -112,7 +112,7 @@ class PageController extends Controller
     {
         $client = new Client();
         $baseUrl = 'http://217.163.51.232/ymax/api/';
-        $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => '2014-06-01 12:33:34', 'to_time' => '2014-06-01 12:33:34', 'user' => Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
+        $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => '2014-06-01 12:33:34', 'to_time' => '2014-06-01 12:33:34', 'user' => \Auth::user()->name, 'password' => (nonce+user+password), 'nonce' => yafvfycgv]]);
         $log = $response->getBody()->getContents();
         /*$log = "si;dialed_no;connect_time;duration;region;call_cost<br>
         si = 0;8801753716990; 2014-08-26 16:30:18;200;Bangladesh (880);0.50<br>

@@ -166,8 +166,7 @@
 					{{ csrf_field() }}
 					<div class="login-header">
 						<a href="dashboard-1.html" class="logo">
-							<img src="{{ asset('images/logo/itel_logo.png') }}" alt="" width="80" style="background-color: #2c2e2f;" />
-							<span>Login</span>
+							<img src="{{ asset('images/logo/logo.png') }}" alt="" width="80" style="background-color: #2c2e2f;" />
 						</a>
 						
 						<p>Dear user, log in to access the admin area!</p>

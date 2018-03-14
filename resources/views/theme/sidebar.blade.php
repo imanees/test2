@@ -5,7 +5,7 @@
 					<!-- logo -->
 					<div class="logo">
 						<a href="" class="logo-expanded">
-							<img src="{{ asset('images/logo/itel_logo.png') }}" width="150" alt="" />
+							<img src="{{ asset('images/logo/logo.png') }}" width="150" alt="" />
 						</a>
 						
 						<a href="index.html" class="logo-collapsed">
