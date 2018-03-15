@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Auth;
 use Session;
+use Utils;
+
 
 class PageController extends Controller
 {
@@ -29,12 +31,12 @@ class PageController extends Controller
     {
         PageController::newnonce();
         $this->validate($request, [
-            'country' => 'required',
+            'countryID' => 'required',
 
         ]);
         $client = new Client();
         $baseUrl = 'http://user.popularvoiz.com/billing/api/';
-        $response = $client->get($baseUrl . 'mtuRateApi.jsp', ['query' => ['user' => Auth::user()->name, 'nonce' => Session::get('nonce'), 'password' => Session::get('key'), 'country' => $request->country]]);
+        $response = $client->get($baseUrl . 'mtuRateApi.jsp', ['query' => ['user' => Auth::user()->name, 'nonce' => Session::get('nonce'), 'password' => Session::get('key'), 'country' => $request->countryID]]);
         
         $rates = $response->getBody()->getContents();
         /*if (strpos($rates, 'errorCode') !== FALSE) {
@@ -66,6 +68,7 @@ class PageController extends Controller
     public function profile()
     {
         PageController::newnonce();
+        $countrylist = Utils::getCountryList();
         $client = new Client();
         $baseUrl = 'http://user.popularvoiz.com/billing/';
         $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => 'getProfileInfo', 'username' => Auth::user()->name, 'nonce' => Session::get('nonce'), 'password' => Session::get('key')]]);
@@ -78,7 +81,8 @@ class PageController extends Controller
             $profile[$data[0]] = $data[1];
         }
         return view('profile', [
-                'info' => $profile
+                'info' => $profile,
+                'country' => $countrylist
             ]);
     }
 

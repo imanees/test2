@@ -39,10 +39,10 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="field-2">Country</label>
 							
-							<div class="col-sm-3">
-								<input type="text" name="country" class="form-control" id="field-1" placeholder="Country ">
+							<div class="col-sm-4">
+								{!!$country!!}
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-4">
 								<button type="submit" class="btn btn-info btn-single">Search</button>
 							</div>
 						</div>

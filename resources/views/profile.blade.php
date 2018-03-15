@@ -20,7 +20,8 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<form role="form" class="form-horizontal">
+							<form role="form" method="post" action="" class="form-horizontal" >
+								{{csrf_field()}}
 
 								<div class="form-group">
 									<span class="text-primary">Account Information</span>
@@ -32,7 +33,7 @@
 									<label class="col-sm-2 control-label" for="field-2">Password</label>
 									
 									<div class="col-sm-10">
-										<input type="password" class="form-control" id="field-1" placeholder="(Password)">
+										<input type="password" name="password" class="form-control" id="field-1" placeholder="(Password)">
 									</div>
 								</div>
 								
@@ -42,7 +43,7 @@
 									<label class="col-sm-2 control-label" for="field-2">Confirm Password</label>
 									
 									<div class="col-sm-10">
-										<input type="password" class="form-control" id="field-2" placeholder="(Conf Password)">
+										<input type="password" name="confPassword" class="form-control" id="field-2" placeholder="(Conf Password)">
 									</div>
 								</div>
 								
@@ -138,7 +139,7 @@
 									<label class="col-sm-2 control-label" for="field-7">Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-7" placeholder="Name" value="@if(isset($info['name']))
+										<input type="text" name="name" class="form-control" id="field-7" placeholder="Name" value="@if(isset($info['name']))
 										{{$info['name']}} @endif">
 									</div>
 								</div>
@@ -149,7 +150,7 @@
 									<label class="col-sm-2 control-label" for="field-8">Designation</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-8" placeholder="Designation" value="@if (isset ($info['Designation'])) {{$info['Designation']}} @endif">
+										<input type="text" name="designation" class="form-control" id="field-8" placeholder="Designation" value="@if (isset ($info['Designation'])) {{$info['Designation']}} @endif">
 									</div>
 								</div>
 								
@@ -159,7 +160,7 @@
 									<label class="col-sm-2 control-label" for="field-9">Company Name</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-9" placeholder="Company" value="@if (isset ($info['Company'])) {{$info['Company']}} @endif">
+										<input type="text" name="companyname" class="form-control" id="field-9" placeholder="Company" value="@if (isset ($info['Company'])) {{$info['Company']}} @endif">
 									</div>
 								</div>
 								
@@ -169,7 +170,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Phone</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Phone" value="@if (isset ($info['Phone'])) {{$info['Phone']}} @endif">
+										<input type="text" name="phone" class="form-control" id="field-1" placeholder="Phone" value="@if (isset ($info['Phone'])) {{$info['Phone']}} @endif">
 									</div>
 								</div>
 								
@@ -188,7 +189,7 @@
 									
 									
 									<div class="col-sm-10">
-										<input type="email" class="form-control" id="field-3" placeholder="Enter your email&hellip;" value="@if (isset ($info['emailID'])) {{$info['emailID']}} @endif">
+										<input type="email" name="emailID" class="form-control" id="field-3" placeholder="Enter your email&hellip;" value="@if (isset ($info['emailID'])) {{$info['emailID']}} @endif">
 										<p class="help-block">Example block-level help text here. Emails inputs are validated on native HTML5 forms.</p>
 									</div>
 								</div>
@@ -198,7 +199,7 @@
 									<label class="col-sm-2 control-label" for="field-1">Post Code</label>
 									
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="field-1" placeholder="Pin code">
+										<input type="text" name="pincode" class="form-control" id="field-1" placeholder="Pin code">
 									</div>
 								</div>
 								
@@ -217,13 +218,7 @@
 									<label class="col-sm-2 control-label">Country</label>
 									
 									<div class="col-sm-10">
-										<select class="form-control">
-											<option>Option 1</option>
-											<option>Option 2</option>
-											<option>Option 3</option>
-											<option>Option 4</option>
-											<option>Option 5</option>
-										</select>
+										{!!$country!!}
 									</div>
 								</div>
 								
@@ -293,4 +288,8 @@
 					
 				</div>
 			</div>
+			<script type="text/javascript">
+				var d = document.getElementById("countryID");
+				d.className += " form-control";
+			</script>
 @endsection

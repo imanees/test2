@@ -28,7 +28,7 @@ class loginController extends Controller
 			Session::put('password', $request->password);
 			PageController::newnonce();
 
-			return redirect()->intended('/');	
+			return redirect()->intended('/home');	
 		}
 		else{
 			return back()->with('message', 'Password and username doesnot match with our record');

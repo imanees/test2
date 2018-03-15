@@ -15,6 +15,9 @@ use App\Http\Controllers\PageController;
 Route::get('/', function () {
     return view('login.login');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 /*Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth');*/
@@ -30,13 +33,13 @@ Route::get('/paymentGateway', function () {
 })->middleware('auth');*/
 
 Route::get('/topUpRatePlanDetails', function () {
-    return view('topUpRate');
+    return view('topUpRate')->with('country', Utils::getCountryList());
 })->middleware('auth'); //mtu rate
 Route::get('/paymentView', function () {
     return view('paymentView');
 })->middleware('auth');
 Route::get('/costCalculator', function () {
-    return view('costCalculator');
+    return view('costCalculator')->with('country', Utils::getCountryList());
 })->middleware('auth');
 /*Route::get('/history', function () {
     return view('history');
