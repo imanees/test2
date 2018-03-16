@@ -69,6 +69,7 @@ class PageController extends Controller
     {
         PageController::newnonce();
         $countrylist = Utils::getCountryList();
+        $lang = Utils::getLanguageList();
         $client = new Client();
         $baseUrl = 'http://user.popularvoiz.com/billing/';
         $response = $client->get($baseUrl . 'profilePictureHandler.do', ['query' => ['requesttype' => 'getProfileInfo', 'username' => Auth::user()->name, 'nonce' => Session::get('nonce'), 'password' => Session::get('key')]]);
@@ -82,7 +83,8 @@ class PageController extends Controller
         }
         return view('profile', [
                 'info' => $profile,
-                'country' => $countrylist
+                'country' => $countrylist,
+                'lang' =>$lang
             ]);
     }
 

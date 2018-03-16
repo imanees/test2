@@ -93,11 +93,12 @@
 									
 									<div class="col-sm-10">
 										<select class="form-control">
-											<option>Option 1</option>
-											<option>Option 2</option>
-											<option>Option 3</option>
-											<option>Option 4</option>
-											<option>Option 5</option>
+											@if(!empty($lang))
+												@foreach($lang as $lan)
+												@php $lan = explode('=', $lan); @endphp
+												<option value="{{$lan[1]}}">{{$lan[0]}}</option>
+												@endforeach
+											@endif
 										</select>
 									</div>
 								</div>
