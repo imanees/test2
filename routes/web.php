@@ -29,6 +29,8 @@ Route::get('/paymentGateway', function () {
     return view('paymentconf');
 })->middleware('auth');
 
+Auth::routes();
+
 /*Route::get('/ratePlanDetails', function () {
     return view('ratePlan');
 })->middleware('auth');*/
