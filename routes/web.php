@@ -13,8 +13,9 @@
 use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
-    return view('login.login');
-});
+    return view('home');
+})->middleware('auth');
+
 Route::get('/home', function () {
     return view('home');
 });

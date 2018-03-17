@@ -4,7 +4,7 @@
 					
 					<!-- logo -->
 					<div class="logo">
-						<a href="" class="logo-expanded">
+						<a href="/" class="logo-expanded">
 							<img src="{{ asset('images/logo/logo.png') }}" width="150" alt="" />
 						</a>
 						
@@ -41,7 +41,7 @@
 					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
 					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
 					<li class="active opened active">
-						<a href="">
+						<a href="/">
 							<i class="linecons-desktop"></i>
 							<span class="title">Dashboard</span>
 						</a>						

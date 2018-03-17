@@ -16,9 +16,10 @@
 				<ul class="user-info-menu right-links list-inline list-unstyled">
 					
                     <li class="hidden-sm hidden-xs">
-                        Balance: @if(isset($balance)) {{$balance}} @endif USD </br>
-                        Credit: 0.00 USD </br>
-                        Status: Active
+                        </br></br>
+                        Balance:<b><span style="color: green"> @if(isset($balance)) {{$balance}} @endif USD </span></b></br>
+                        Credit: <b><span style="color: red"> 0.00 USD </span></b><!-- </br> -->
+                        <!-- Status: Active -->
 					</li>
 					
 					<li class="dropdown user-profile">

@@ -10,7 +10,6 @@ use Session;
 
 class loginController extends Controller
 {
-    //
 
     public function create()
     {

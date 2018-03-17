@@ -15,6 +15,7 @@ class PageController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function myRate()
     {
         $client = new Client();
