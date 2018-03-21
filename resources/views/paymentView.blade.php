@@ -154,6 +154,25 @@
 	
 	</div>
 </div>
+<!----- <tbody>
+						@if(isset($result))
+							@php $count = 1; @endphp
+							@foreach($result as $value)
+
+								@php $string = explode(',', $value); @endphp
+								<tr>
+									<td>{{$count}}</td>
+									<td></td>
+									<td>@if(isset($string[2])) {{$string[2]}} @endif</td>
+									<td>@if(isset($string[3])) {{$string[3]}} @endif</td>
+									<td>@if(isset($string[0])) {{$string[0]}} @endif</td>
+									<td>@if(isset($string[1])) {{$string[1]}} @endif</td>
+									<td>@if(isset($string[4])) {{$string[4]}} @endif</td>
+								</tr>
+								@php $count++; @endphp
+						    @endforeach
+					    @endif
+					</tbody> -->
 <script>
 	function showDateRange() {
 	    var x = document.getElementById("datepick");

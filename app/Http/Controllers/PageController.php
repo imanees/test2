@@ -141,12 +141,12 @@ class PageController extends Controller
     }
     public function history()
     {
-        $startdate = date("Y-m-d H:i:s"); 
-        $enddate = date("Y-m-d H:i:s", strtotime('-3 days') );
+        $enddate = date("Y-m-d H:i:s"); 
+        $startdate = date("Y-m-d H:i:s", strtotime('-6 month') );
         PageController::newnonce();
         $client = new Client();
-        $baseUrl = 'http://user.popularvoiz.com/billing/';
-        $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
+        $baseUrl = 'http://user.popularvoiz.com/billing/api/';
+        $response = $client->get($baseUrl . 'callHistoryApi.jsp', ['query' => ['service_type' => 1, 'from_time' => "$startdate", 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
         $log = $response->getBody()->getContents();
         /*$log = "si;dialed_no;connect_time;duration;region;call_cost<br>
         si = 0;8801753716990; 2014-08-26 16:30:18;200;Bangladesh (880);0.50<br>
@@ -166,7 +166,7 @@ class PageController extends Controller
         PageController::newnonce();
         $client = new Client();
         $baseUrl = 'http://user.popularvoiz.com/billing/api/';
-        $response = $client->get($baseUrl . 'addFundAPI.do', ['query' => ['service_type' => 'rechargeHistory', 'historyCount' => $request->count, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
+        $response = $client->get($baseUrl . 'addFundAPI.jsp', ['query' => ['type' => 'rechargeHistory', 'historyCount' => $request->count, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
         $result = $response->getBody()->getContents();
         /*$result = "Date;description;amount;rechargedescription;rechargeby<br>
         2014-08-26 16:30:18,Account recharged by shameed,4.795,transactio id:551151,10001<br>
