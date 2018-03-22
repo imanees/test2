@@ -111,10 +111,20 @@ class PageController extends Controller
     }
 
     public function  historyfunction($startdate, $enddate){
+        PageController::newnonce();
         $client = new Client();
-        $baseUrl = 'http://217.163.51.232/ymax/api/';
-        $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
+        $baseUrl = 'http://user.popularvoiz.com/billing/api/';
+        $response = $client->get($baseUrl . 'callHistoryApi.jsp', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
         $log = $response->getBody()->getContents();
+        $log = explode('cost', $log);
+        if(!isset($log[1])) {
+            echo "no result found";
+            exit();
+        }
+        unset($log[0]);
+        $log = explode(';', $log[1]);
+        unset($log[0]);
+        $log = array_chunk($log, 5);
         return view('historyajax', [
                 'logs' => $log
             ]);
@@ -126,23 +136,32 @@ class PageController extends Controller
             'daterange' => 'required',
 
         ]);
+        PageController::newnonce();
         $date = explode('-', $request->daterange);
         
         $startdate = date("Y-m-d H:i:s", strtotime($date[0]) );
         $enddate = date("Y-m-d H:i:s", strtotime($date[1]) );
 
         $client = new Client();
-        $baseUrl = 'http://217.163.51.232/ymax/api/';
-        $response = $client->get($baseUrl . 'callHistoryApi.do', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
-        $list = $response->getBody()->getContents();
+        $baseUrl = 'http://user.popularvoiz.com/billing/api/';
+        $response = $client->get($baseUrl . 'callHistoryApi.jsp', ['query' => ['service_type' => 1, 'from_time' => $startdate, 'to_time' => $enddate, 'user' => Auth::user()->name, 'password' => Session::get('key'), 'nonce' => Session::get('nonce')]]);
+        $log = $response->getBody()->getContents();
+        $log = explode('cost', $log);
+        if(!isset($log[1])) {
+            return view('history');
+        }
+        unset($log[0]);
+        $log = explode(';', $log[1]);
+        unset($log[0]);
+        $log = array_chunk($log, 5);
         return view('history', [
-                'list' => $list
+                'logs' => $log
             ]);
     }
     public function history()
     {
         $enddate = date("Y-m-d H:i:s"); 
-        $startdate = date("Y-m-d H:i:s", strtotime('-6 month') );
+        $startdate = date("Y-m-d H:i:s", strtotime('-3 month') );
         PageController::newnonce();
         $client = new Client();
         $baseUrl = 'http://user.popularvoiz.com/billing/api/';
@@ -151,8 +170,22 @@ class PageController extends Controller
         /*$log = "si;dialed_no;connect_time;duration;region;call_cost<br>
         si = 0;8801753716990; 2014-08-26 16:30:18;200;Bangladesh (880);0.50<br>
         si = 1;8801753716990; 2014-08-26 16:32:18;120;India (91);1.20";*/
-        $log = explode('<br>', $log);
+        $log = explode('cost', $log);
+        if(!isset($log[1])) {
+            return view('history');
+        }
         unset($log[0]);
+        $log = explode(';', $log[1]);
+        unset($log[0]);
+        /*$count = count($log);
+        $i = 5;
+        while ($i <= $count) {
+           $new = preg_split('/\s+/', $log[5]);
+           $i += 5;
+        }*/
+        
+
+        $log = array_chunk($log, 5);
         return view('history', [
                 'logs' => $log
             ]);
