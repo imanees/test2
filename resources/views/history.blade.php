@@ -26,7 +26,7 @@
 					
 					<div class="form-group">
 						<label class="radio-inline">
-							<input type="radio" name="radio-2" checked="" >
+							<input type="radio" name="radio-2" @if(!isset($sdate) && !isset($edate)){{'checked=""'}} @endif onclick="showHistory(0)">
 							Last
 						</label>
 						<label class="radio-inline">
@@ -42,7 +42,7 @@
 							Previous 2 Days
 						</label>
 						<label class="radio-inline">
-							<input onclick="showDateRange();" type="radio" name="radio-2" ">
+							<input onclick="showDateRange();" type="radio" name="radio-2" @if(isset($sdate) && (isset($edate)) ) {{'checked=""'}} @endif>
 							Custom
 						</label>
 					</div>
@@ -106,7 +106,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Log</h3> <br>
-				@if(isset($sdate) && isset($edate))<h5>From {{$sdate}} To {{$edate}}</h5> @endif
 				<div class="panel-options">
 					<a href="#" data-toggle="panel">
 						<span class="collapse-icon">&ndash;</span>
@@ -117,8 +116,11 @@
 					</a>
 				</div>
 			</div>
-			<div class="panel-body">			
-				<table class="table table-bordered table-striped table-condensed table-hover" id="tabview">
+			<div class="panel-body">
+				<div  id="tabview">
+			@if(isset($sdate) && isset($edate))<h5>From {{$sdate}} To {{$edate}}</h5> @endif			
+				<table class="table table-bordered table-striped table-condensed table-hover">
+					
 					<thead>
 						<tr>
 							<th>Serial</th>
@@ -157,6 +159,7 @@
 					    @endif
 					</tbody>
 				</table>
+			</div>
 			
 			</div>
 		</div>
@@ -167,7 +170,8 @@
 <script>
 	function showDateRange() {
 	    var x = document.getElementById("datepick");
-	    var y = document.getElementById("datepick");
+	    var y = document.getElementById("tabview");
+	y.style.display = "none";
 	    if (x.style.display === "none") {
 	        x.style.display = "block";
 	    } else {
@@ -178,6 +182,7 @@ function showHistory(tabVal){
 	var x = document.getElementById("datepick");
 	x.style.display = "none";
 	//alert(tabVal);
+	document.getElementById("tabview").innerHTML = "";
 		$("#tabview").html('<div style="float:left;margin-left:38%;"><img src="./images/animated_progress.gif" /></div>');	
 		$.ajax({
 			url:"/ajax/"+tabVal,

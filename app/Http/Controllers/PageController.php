@@ -106,8 +106,14 @@ class PageController extends Controller
             $enddate = date("Y-m-d H:i:s");
             $startdate = date("Y-m-d H:i:s", strtotime('-2 days') );
         }
-        PageController::historyfunction($startdate, $enddate);
-        
+        elseif ($id == 0) {
+            $enddate = date("Y-m-d H:i:s"); 
+            $startdate = date("Y-m-d H:i:s", strtotime('-3 month') );
+        }
+        $log = PageController::historyfunction($startdate, $enddate);
+        return view('historyajax', [
+                'logs' => $log
+            ]);
     }
 
     public function  historyfunction($startdate, $enddate){
@@ -125,9 +131,9 @@ class PageController extends Controller
         $log = explode(';', $log[1]);
         unset($log[0]);
         $log = array_chunk($log, 5);
-        return view('historyajax', [
-                'logs' => $log
-            ]);
+        return $log;
+        
+
     }
 
     public function historyFilter(Request $request)

@@ -1,4 +1,4 @@
-					<table class="table table-bordered table-striped table-condensed table-hover">
+<table class="table table-bordered table-striped table-condensed table-hover">
 						<thead>
 						<tr>
 							<th>Serial</th>
@@ -36,3 +36,4 @@
 					    @endif
 					</tbody>
 				</table>
+				</body>
