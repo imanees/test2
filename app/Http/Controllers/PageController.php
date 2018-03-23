@@ -160,6 +160,15 @@ class PageController extends Controller
         $log = explode(';', $log[1]);
         unset($log[0]);
         $log = array_chunk($log, 5);
+        if(isset($request->number) && ($request->number !== '')) {
+            return view('history', [
+                'logs' => $log,
+                'sdate' => $startdate,
+                'edate' => $enddate,
+                'number' => $request->number
+            ]);
+            exit();
+        }
         return view('history', [
                 'logs' => $log,
                 'sdate' => $startdate,

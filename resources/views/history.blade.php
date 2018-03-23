@@ -68,7 +68,7 @@
 								<label class="col-sm-3 control-label" for="field-2"><span class="text-primary">Dialed Number</span></label>
 								
 								<div class="col-sm-3">
-									<input type="text" class="form-control" id="field-2">
+									<input type="text" name="number" class="form-control" id="field-2">
 								</div>
 							</div>
 							<div class="form-group col-sm-12" style="display: none;">
@@ -138,19 +138,35 @@
 						@if(isset($logs))
 							@php $count = 1; @endphp
 							@foreach($logs as $val)
-							@php $val[2] = round($val[2] / 60); @endphp
-						    	@php $new = preg_split('/\s+/', $val[4]); @endphp
-								<tr>
-									<td>{{$count}}</td>
-									<td>{{$val[1]}}</td>
-									<td>{{$val[3]}}</td>
-									<td>@if ($val[2] != 0) {{round($new[0] / $val[2] , 2)}} @else {{$new[0]}}  @endif</td>
-									<td>{{$val[0]}}</td>
-									<td>{{$val[2]}}</td>
-									<td> {{$new[0]}}</td>
-								</tr>
-								@php $new = array(); $count++; @endphp
-
+								@if(isset($number))
+									@if(strpos($val[0], $number) !== false)
+										@php $val[2] = round($val[2] / 60); @endphp
+								    	@php $new = preg_split('/\s+/', $val[4]); @endphp
+										<tr>
+											<td>{{$count}}</td>
+											<td>{{$val[1]}}</td>
+											<td>{{$val[3]}}</td>
+											<td>@if ($val[2] != 0) {{round($new[0] / $val[2] , 2)}} @else {{$new[0]}}  @endif</td>
+											<td>{{$val[0]}}</td>
+											<td>{{$val[2]}}</td>
+											<td> {{$new[0]}}</td>
+										</tr>
+										@php $new = array(); $count++; @endphp
+									@endif
+								@else
+									@php $val[2] = round($val[2] / 60); @endphp
+								    	@php $new = preg_split('/\s+/', $val[4]); @endphp
+										<tr>
+											<td>{{$count}}</td>
+											<td>{{$val[1]}}</td>
+											<td>{{$val[3]}}</td>
+											<td>@if ($val[2] != 0) {{round($new[0] / $val[2] , 2)}} @else {{$new[0]}}  @endif</td>
+											<td>{{$val[0]}}</td>
+											<td>{{$val[2]}}</td>
+											<td> {{$new[0]}}</td>
+										</tr>
+										@php $new = array(); $count++; @endphp
+								@endif
 						    @endforeach
 					    @else
 					    <tr>
