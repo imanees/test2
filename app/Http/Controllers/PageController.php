@@ -155,7 +155,9 @@ class PageController extends Controller
         unset($log[0]);
         $log = array_chunk($log, 5);
         return view('history', [
-                'logs' => $log
+                'logs' => $log,
+                'sdate' => $startdate,
+                'edate' => $enddate
             ]);
     }
     public function history()

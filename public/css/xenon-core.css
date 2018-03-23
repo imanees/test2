@@ -3040,7 +3040,7 @@ body.chat-open #chat {
     border-bottom: 0;
   }
   .page-container .main-content .navbar.user-info-navbar {
-    display: none;
+    /*display: none;*/
   }
   .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
     display: block;

@@ -1,7 +1,7 @@
 <!-- Left links for user info navbar -->
 				<ul class="user-info-menu left-links list-inline list-unstyled">
 					
-					<li class="hidden-sm hidden-xs">
+					<li class="hidden-sm hidden-xs hidden-new">
 						<a href="#" data-toggle="sidebar">
 							<i class="fa-bars"></i>
 						</a>

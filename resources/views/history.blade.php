@@ -105,7 +105,8 @@
 		
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Log</h3>
+				<h3 class="panel-title">Log</h3> <br>
+				@if(isset($sdate) && isset($edate))<h5>From {{$sdate}} To {{$edate}}</h5> @endif
 				<div class="panel-options">
 					<a href="#" data-toggle="panel">
 						<span class="collapse-icon">&ndash;</span>
